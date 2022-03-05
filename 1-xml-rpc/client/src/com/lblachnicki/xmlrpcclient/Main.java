@@ -29,14 +29,14 @@ public class Main {
                         System.out.println("Missing parameters. Try \"show\" for help.");
                         break;
                     }
-                    executeArithmeticMean(server, Arrays.stream(args).skip(1).collect(Collectors.toList()));
+                    executeArithmeticMean(server, Arrays.stream(args).skip(2).collect(Collectors.toList()));
                     break;
                 case "geometricMean":
                     if (args.length < 2) {
                         System.out.println("Missing parameters. Try \"show\" for help.");
                         break;
                     }
-                    executeGeometricMean(server, Arrays.stream(args).skip(1).collect(Collectors.toList()));
+                    executeGeometricMean(server, Arrays.stream(args).skip(2).collect(Collectors.toList()));
                     break;
                 case "show":
                     executeShow(server);
