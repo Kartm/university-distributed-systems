@@ -9,7 +9,10 @@ public class Server {
     public static void main(String args[]) throws RemoteException, MalformedURLException {
         LocateRegistry.createRegistry(1099);
 
-        Rooter a = new RooterImpl();
-        Naming.rebind("rmi://localhost:1099/rooter", a);
+        Rooter rooter = new RooterImpl();
+        Naming.rebind("rmi://localhost:1099/rooter", rooter);
+
+        Logarithmer logarithmer = new LogarithmerImpl();
+        Naming.rebind("rmi://localhost:1099/logarithmer", logarithmer);
     }
 }
