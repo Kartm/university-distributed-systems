@@ -119,7 +119,8 @@ public class HelloWorldClient {
         .build();
     try {
       HelloWorldClient client = new HelloWorldClient(channel);
-      client.register("lukasz", "admin1", 3.14);
+      client.register("lukasz", "admin2", 2);
+      client.register("lukasz", "admin1", 4);
       client.login("lukasz", "admin1");
       client.login("otheruser", "admin1");
     } finally {
