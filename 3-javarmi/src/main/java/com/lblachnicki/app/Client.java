@@ -7,14 +7,13 @@ import java.rmi.RemoteException;
 
 public class Client {
     public static void main(String args[]) throws MalformedURLException, NotBoundException, RemoteException {
-        Adder stub = (Adder) Naming.lookup("rmi://localhost:1099/adder");
+        var rooterStub = (Rooter) Naming.lookup("rmi://localhost:1099/rooter");
 
-        System.out.println(stub.add(1, 2));
-        System.out.println(stub.add(-1, 1));
+        var rootTask = new RootTask();
+        rootTask.x = 2;
+        rootTask.degree = 2;
 
-        Name name = new Name();
-        name.name = "xd";
-
-        System.out.println(stub.addPrefix(name).name);
+        var rootResponse = rooterStub.calculate(rootTask);
+        System.out.println(rootResponse.result);
     }
 }
