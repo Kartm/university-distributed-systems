@@ -7,12 +7,16 @@ import java.rmi.registry.LocateRegistry;
 
 public class Server {
     public static void main(String args[]) throws RemoteException, MalformedURLException {
-        LocateRegistry.createRegistry(1099);
+        int port = Integer.parseInt(args[0]);
+
+        System.out.println("Starting server at localhost:" + port);
+
+        LocateRegistry.createRegistry(port);
 
         Rooter rooter = new RooterImpl();
-        Naming.rebind("rmi://localhost:1099/rooter", rooter);
+        Naming.rebind(String.format("rmi://localhost:%d/rooter", port), rooter);
 
         Logarithmer logarithmer = new LogarithmerImpl();
-        Naming.rebind("rmi://localhost:1099/logarithmer", logarithmer);
+        Naming.rebind(String.format("rmi://localhost:%d/logarithmer", port), logarithmer);
     }
 }
